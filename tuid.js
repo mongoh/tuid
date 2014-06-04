@@ -13,9 +13,6 @@
  * limitations under the License.
  */
 
-// Counter to simulate a "new" request
-var counter = 0;
-
 if (!window['getXMLHttpRequest']) {
   // Copied from MochiKit/Async.js
   function getXMLHttpRequest() {
@@ -45,10 +42,9 @@ if (!window['getXMLHttpRequest']) {
 function tuid(cb){
   var tuid;
   var client = getXMLHttpRequest();
-  counter >= 1000 ? counter = 0 : counter++;
   client.open("PUT", "https://tuid.s3.amazonaws.com/lock/file");
   client.setRequestHeader("x-amz-storage-class", "REDUCED_REDUNDANCY");
-  client.setRequestHeader("x-amz-counter", counter.toString())
+  client.setRequestHeader("x-amz-counter", Math.random().toString())
   client.onreadystatechange = function(){
     if ( client.readyState === 4 && client.status === 200 ) {
       var versionId = client.getResponseHeader("x-amz-version-id");
