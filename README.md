@@ -12,6 +12,9 @@ milliseconds since epoch -> 1401910420816<br/><br/>
 
 This is especially useful for client-side id generation. It's also not monotonically increasing!
 
+##Demo
+See the demo on <a href="http://jsfiddle.net/9AsmJ/1/" target="_blank">jsFiddle<a>
+
 ##Usage
 Download and include tuid.js<br/>
 ```<script type="text/javascript" src="tuid.js"></script>```
